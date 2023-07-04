@@ -11,20 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SOLUTION_PATH: .\GitHubActionTestSolution\
+      APP_PROJECT_PATH: ./GitHubActionTestSolution/MyWebApplication
+      TEST_PROJECT_PATH: ./GitHubActionTestSolution/NunitTestProject
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      with:
-        path: ${{ env.SOLUTION_PATH }}
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore ${{ env.SOLUTION_PATH }}
-    - name: Build
-      run: dotnet build --no-restore ${{ env.SOLUTION_PATH }}
+    - name: Restore application dependencies
+      run: dotnet restore ${{ env.APP_PROJECT_PATH }}
+    - name: Build application
+      run: dotnet build --no-restore ${{ env.APP_PROJECT_PATH }}
     - name: Test
-      run: dotnet test --no-build --verbosity normal ${{ env.SOLUTION_PATH }}
+      run: dotnet test --no-build --verbosity normal ${{ env.TEST_PROJECT_PATH }}
