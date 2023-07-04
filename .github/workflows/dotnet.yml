@@ -25,5 +25,5 @@ jobs:
       run: dotnet restore ${{ env.APP_PROJECT_PATH }}
     - name: Build application
       run: dotnet build --no-restore ${{ env.APP_PROJECT_PATH }}
-   # - name: Test
-   #  run: dotnet test --no-build --verbosity normal ${{ env.TEST_PROJECT_PATH }}
+    - name: Test
+      run: dotnet test --no-build --verbosity normal ${{ env.TEST_PROJECT_PATH }}
