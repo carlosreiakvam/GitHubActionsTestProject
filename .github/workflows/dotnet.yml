@@ -15,9 +15,6 @@ jobs:
       TEST_PROJECT_PATH: ./GitHubActionTestSolution/NunitTestProject
 
     steps:
-    - name: Print Current Path
-      run: |
-        echo "Current path: $PWD"
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Setup .NET
@@ -28,8 +25,5 @@ jobs:
       run: dotnet restore ${{ env.APP_PROJECT_PATH }}
     - name: Build application
       run: dotnet build --no-restore ${{ env.APP_PROJECT_PATH }}
-    - name: Print Current Path
-      run: |
-        echo "Current path: $PWD"
     - name: Test
       run: dotnet test ${{ env.TEST_PROJECT_PATH }}
