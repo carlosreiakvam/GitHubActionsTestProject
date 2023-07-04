@@ -12,7 +12,7 @@ jobs:
 
     env:
       APP_PROJECT_PATH: ./GitHubActionTestSolution/MyWebApplication
-      TEST_PROJECT_PATH: ../NunitTestProject
+      TEST_PROJECT_PATH: ./GitHubActionTestSolution/NunitTestProject
 
     steps:
     - name: Checkout repository
